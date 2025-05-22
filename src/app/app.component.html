@@ -1,0 +1,47 @@
+<app-header></app-header>
+<main>
+  <!-- <app-hero></app-hero> -->
+  <section class="p-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Column 1: Text then Image -->
+      <div class="flex flex-col gap-8">
+        <app-info-card
+          class="flex-1"
+          [title]="infoCards[0].title"
+          [content]="infoCards[0].content"
+          [buttonText]="infoCards[0].buttonText"
+          > <!-- imageUrl is not bound, so InfoCard will not show its internal image -->
+        </app-info-card>
+        <img *ngIf="infoCards[0].imageUrl" [src]="infoCards[0].imageUrl" alt="{{ infoCards[0].title }}" class="w-full object-cover rounded-lg shadow-lg flex-1 h-full">
+      </div>
+
+      <!-- Column 2: Image then Text -->
+      <div class="flex flex-col gap-8">
+        <img *ngIf="infoCards[1].imageUrl" [src]="infoCards[1].imageUrl" alt="{{ infoCards[1].title }}" class="w-full object-cover rounded-lg shadow-lg flex-1 h-full">
+        <app-info-card
+          class="flex-1"
+          [title]="infoCards[1].title"
+          [content]="infoCards[1].content"
+          [buttonText]="infoCards[1].buttonText"
+          [listItems]="infoCards[1].listItems"
+          > <!-- imageUrl is not bound -->
+        </app-info-card>
+      </div>
+
+      <!-- Column 3: Text then Image -->
+      <div class="flex flex-col gap-8">
+        <app-info-card
+          class="flex-1"
+          [title]="infoCards[2].title"
+          [content]="infoCards[2].content"
+          [buttonText]="infoCards[2].buttonText"
+          [listItems]="infoCards[2].listItems"
+          > <!-- imageUrl is not bound -->
+        </app-info-card>
+        <img *ngIf="infoCards[2].imageUrl" [src]="infoCards[2].imageUrl" alt="{{ infoCards[2].title }}" class="w-full object-cover rounded-lg shadow-lg flex-1 h-full">
+      </div>
+
+    </div>
+  </section>
+</main>
