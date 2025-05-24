@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   imports: [CommonModule, HeaderComponent, InfoCardComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   infoCards = [

@@ -10,7 +10,6 @@ interface Organiser {
   selector: 'app-organisers',
   imports: [],
   templateUrl: './organisers.component.html',
-  styleUrl: './organisers.component.css',
 })
 export class OrganisersComponent {
   organisers: Organiser[] = [
