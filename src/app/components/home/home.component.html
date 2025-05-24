@@ -1,0 +1,54 @@
+
+  <app-header class="shrink-0"></app-header> <!-- Fixed height header -->
+
+  <main class="flex-1 overflow-hidden">
+    <section class="p-8 h-full overflow-y-auto">
+      <div class="w-full h-[85vh] overflow-hidden">
+  <div class="w-[90%] mx-auto h-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
+      
+      <!-- Column 1: Text then Image -->
+      <div class="flex flex-col gap-4 h-full overflow-hidden">
+        <app-info-card
+          class="flex-1 overflow-auto"
+          [title]="infoCards[0].title"
+          [content]="infoCards[0].content"
+          [buttonText]="infoCards[0].buttonText">
+        </app-info-card>
+        <img *ngIf="infoCards[0].imageUrl" [src]="infoCards[0].imageUrl" alt="{{ infoCards[0].title }}"
+             class="w-full object-cover rounded-lg shadow-lg h-1/2">
+      </div>
+
+      <!-- Column 2: Image then Text -->
+      <div class="flex flex-col gap-4 h-full overflow-hidden">
+        <img *ngIf="infoCards[1].imageUrl" [src]="infoCards[1].imageUrl" alt="{{ infoCards[1].title }}"
+             class="w-full object-cover rounded-lg shadow-lg h-1/2">
+        <app-info-card
+          class="flex-1 overflow-auto"
+          [title]="infoCards[1].title"
+          [content]="infoCards[1].content"
+          [buttonText]="infoCards[1].buttonText"
+          [listItems]="infoCards[1].listItems">
+        </app-info-card>
+      </div>
+
+      <!-- Column 3: Text then Image -->
+      <div class="flex flex-col gap-4 h-full overflow-hidden">
+        <app-info-card
+          class="flex-1 overflow-auto"
+          [title]="infoCards[2].title"
+          [content]="infoCards[2].content"
+          [buttonText]="infoCards[2].buttonText"
+          [listItems]="infoCards[2].listItems">
+        </app-info-card>
+        <img *ngIf="infoCards[2].imageUrl" [src]="infoCards[2].imageUrl" alt="{{ infoCards[2].title }}"
+             class="w-full object-cover rounded-lg shadow-lg h-1/2">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </section>
+  </main>
+
