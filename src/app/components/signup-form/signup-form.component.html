@@ -1,0 +1,71 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="w-full">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="mb-4">
+      <input
+        type="text"
+        formControlName="firstName"
+        placeholder="FIRST NAME"
+        class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-md font-mono focus:outline-none focus:border-[#F833C7] transition-colors"
+        [class]="{
+          'border-red-500':
+            signupForm.get('firstName')?.invalid &&
+            signupForm.get('firstName')?.touched
+        }"
+      />
+      @if(signupForm.get('firstName')?.invalid &&
+      signupForm.get('firstName')?.touched) {
+      <p class="text-red-500 text-sm mt-1">First name is required</p>
+      }
+    </div>
+
+    <div class="mb-4">
+      <input
+        type="text"
+        formControlName="lastName"
+        placeholder="LAST NAME"
+        class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-md font-mono focus:outline-none focus:border-[#F833C7] transition-colors"
+        [class]="{
+          'border-red-500':
+            signupForm.get('lastName')?.invalid &&
+            signupForm.get('lastName')?.touched
+        }"
+      />
+      @if(signupForm.get('lastName')?.invalid &&
+      signupForm.get('lastName')?.touched) {
+      <p class="text-red-500 text-sm mt-1">Last name is required</p>
+      }
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="EMAIL ADDRESS"
+      class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-md font-mono focus:outline-none focus:border-[#F833C7] transition-colors"
+      [class]="{
+        'border-red-500':
+          signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+      }"
+    />
+    @if(signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+    <p class="text-red-500 text-sm mt-1">
+      @if(signupForm.get('email')?.errors?.['required']) {
+      <span>Email is required</span>
+      } @if(signupForm.get('email')?.errors?.['email']) {
+      <span>Please enter a valid email</span>
+      }
+    </p>
+    }
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <button
+      type="submit"
+      class="px-6 py-2 bg-gradient-to-r from-[#F40147] via-[#F833C7] to-[#961DF6] text-white font-bold uppercase text-sm rounded-md tracking-wider transition-transform hover:scale-105 hover:shadow-lg"
+    >
+      Sign Up
+    </button>
+  </div>
+</form>

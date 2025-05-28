@@ -1,21 +1,22 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, input, output } from '@angular/core';
+import { InfoCardDetail } from './info-card.type';
 
 @Component({
   selector: 'app-info-card',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './info-card.component.html',
-  styleUrl: './info-card.component.css'
 })
 export class InfoCardComponent {
-  @Input() title!: string;
-  @Input() content!: string[];
-  @Input() buttonText!: string;
-  @Input() imageUrl?: string;
-  @Input() listItems?: string[];
+  cardDetail = input<InfoCardDetail>();
+  buttonClick = output<string>();
 
   processContentLine(line: string): string {
     return line.replace(/^>>\s*/, '');
+  }
+
+  onButtonClick(): void {
+    const buttonText = this.cardDetail()?.buttonText;
+    if (buttonText) {
+      this.buttonClick.emit(buttonText);
+    }
   }
 }

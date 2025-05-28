@@ -1,19 +1,24 @@
-<div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg h-full flex flex-col">
-  <img *ngIf="imageUrl" [src]="imageUrl" alt="Dynamic image" class="w-full h-48 object-cover rounded-t-lg mb-4">
+@let detail = cardDetail();
+<div class="bg-gray-800 p-6 rounded-lg h-full flex flex-col justify-between">
+  <h2 class="text-3xl font-bold mb-4">{{ detail?.title }}</h2>
+  <p class="text-sm text-gray-400 mb-4">
+    {{ detail?.content }}
+  </p>
+  @if((detail?.listItems?.length ?? 0) > 0) {
+  <p class="text-sm text-gray-400 mb-1">>> who should apply:</p>
+  <ul class="text-sm text-gray-400 mb-4 list-disc pl-6">
+    @for (item of detail?.listItems; track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+  }
 
-  <div class="flex-grow overflow-y-auto">
-    <h3 class="text-2xl font-bold mb-4">{{ title }}</h3>
-    <div *ngFor="let line of content" class="mb-2 text-gray-400">
-      <p>{{ line.startsWith('>> ') ? '' : '>> ' }}{{ processContentLine(line) }}</p>
-    </div>
-    <ul *ngIf="listItems" class="list-disc list-inside mb-4 text-gray-400">
-      <li *ngFor="let item of listItems">{{ item }}</li>
-    </ul>
-  </div>
-
-  <div class="mt-auto self-start bg-gradient-to-r from-[#F40147] via-[#F833C7] to-[#961DF6] p-1 rounded-xl shadow-lg">
+  <div class="mt-auto">
     <button
-      class="bg-black text-white px-10 py-4 rounded-xl font-semibold text-lg uppercase tracking-wider hover:opacity-90 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-[#F833C7]">
-      {{ buttonText }} </button>
+      class="cursor-pointer bg-gradient-to-r from-[#F40147] via-[#F833C7] to-[#961DF6] text-white font-bold py-2 px-6 rounded"
+      (click)="onButtonClick()"
+    >
+      {{ detail?.buttonText }}
+    </button>
   </div>
 </div>
