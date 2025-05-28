@@ -27,7 +27,7 @@
             ],
             "styles": ["src/styles.css"],
             "scripts": [],
-            "outputMode": "static"
+            "outputMode": "server"
           },
           "configurations": {
             "production": {
