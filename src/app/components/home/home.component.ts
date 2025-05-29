@@ -21,7 +21,7 @@ export class HomeComponent {
     {
       title: 'Submit your talk',
       content: [
-        ">> ng mumbai is now accepting talk proposals for upcoming meetups. whether it's a hard-earned lesson, a clever workaround, or a fresh perspective on Angular.. we want to hear from you.",
+        ">> NG mumbai is now accepting talk proposals for upcoming meetups. whether it's a hard-earned lesson, a clever workaround, or a fresh perspective on Angular.. we want to hear from you.",
       ],
       buttonText: 'BECOME A SPEAKER',
       listItems: [
@@ -29,12 +29,13 @@ export class HomeComponent {
         'Speakers with practical, real-world takeaways',
         'Topics around Angular, frontend performance, tooling, testing, and more',
       ],
+      listItemsTitle: '>> Who should apply:',
       imageUrl: '/assets/talk.png',
     },
     {
       title: 'Call for Sponsors',
       content: [
-        ">> we're looking for sponsors to support our monthly meetups and get direct visibility with a focused, high-value tech audience.",
+        ">> We're looking for sponsors to support our monthly meetups and get direct visibility with a focused, high-value tech audience.",
       ],
       buttonText: 'BECOME A SPONSOR',
       listItems: [
@@ -42,6 +43,7 @@ export class HomeComponent {
         'food & beverage sponsors',
         'brands aligned with developer-first culture',
       ],
+      listItemsTitle: '>> We’re looking for:',
       imageUrl: '/assets/sponsors.png',
     },
   ];

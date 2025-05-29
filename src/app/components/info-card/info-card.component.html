@@ -1,16 +1,24 @@
-<div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg h-full flex flex-col">
-  <img *ngIf="imageUrl" [src]="imageUrl" alt="Dynamic image" class="w-full h-48 object-cover rounded-t-lg mb-4">
-
+<div class="bg-[#3F3145] text-[#C9BECD] p-6 rounded-lg border-2 border-[#504057] h-full flex flex-col">
   <div class="flex-grow overflow-y-auto">
-    <h3 class="text-2xl font-bold mb-4">{{ title }}</h3>
-    <div *ngFor="let line of content" class="mb-2 text-gray-400">
-      <p>{{ line.startsWith('>> ') ? '' : '>> ' }}{{ processContentLine(line) }}</p>
+    <h3 class="text-5xl font-bold mb-4 tracking-tight ">{{ title }}</h3>
+    @for (line of content; track line) {
+    <div class="mb-2">
+      <p class="font-dm-mono">{{ line }}</p>
     </div>
-    <ul *ngIf="listItems" class="list-disc list-inside mb-4 text-gray-400">
-      <li *ngFor="let item of listItems">{{ item }}</li>
+    }
+    @if (listItemsTitle) {
+    <div class="mb-2">
+      <p class="font-dm-mono">{{ listItemsTitle }}</p>
+    </div>
+    }
+    @if (listItems) {
+    <ul class="list-disc list-inside mb-4 text-gray-400 font-dm-mono">
+      @for (item of listItems; track item) {
+      <li>{{ item }}</li>
+      }
     </ul>
+    }
   </div>
-
   <div class="mt-auto self-start bg-gradient-to-r from-[#F40147] via-[#F833C7] to-[#961DF6] p-1 rounded-xl shadow-lg">
     <button
       class=" cursor-pointer bg-black text-white px-4 py-2 rounded-xl font-semibold text-lg uppercase tracking-wider hover:opacity-90 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-[#F833C7]">

@@ -12,6 +12,7 @@ export class InfoCardComponent {
   @Input() content!: string[];
   @Input() buttonText!: string;
   @Input() imageUrl?: string;
+  @Input() listItemsTitle?: string;
   @Input() listItems?: string[];
 
   processContentLine(line: string): string {
