@@ -21,22 +21,6 @@ export class HomeComponent {
       height: 300,
     },
     {
-      title: 'Submit your talk',
-      content: [
-        ">> NG mumbai is now accepting talk proposals for upcoming meetups. whether it's a hard-earned lesson, a clever workaround, or a fresh perspective on Angular.. we want to hear from you.",
-      ],
-      buttonText: 'BECOME A SPEAKER',
-      listItems: [
-        'Developers of all experience levels',
-        'Speakers with practical, real-world takeaways',
-        'Topics around Angular, frontend performance, tooling, testing, and more',
-      ],
-      listItemsTitle: '>> Who should apply:',
-      imageUrl: 'talk_fucdca.png',
-      width: 400,
-      height: 300,
-    },
-    {
       title: 'Call for Sponsors',
       content: [
         ">> We're looking for sponsors to support our monthly meetups and get direct visibility with a focused, high-value tech audience.",
@@ -49,6 +33,22 @@ export class HomeComponent {
       ],
       listItemsTitle: ">> We're looking for:",
       imageUrl: 'sponsors_ryuuoz.png',
+      width: 400,
+      height: 300,
+    },
+    {
+      title: 'Submit your talk',
+      content: [
+        '>> NG Mumbai is accepting talk proposals! Share your Angular insights, lessons, or workarounds with our community.',
+      ],
+      buttonText: 'BECOME A SPEAKER',
+      listItems: [
+        'Developers of all experience levels',
+        'Speakers with practical, real-world takeaways',
+        'Topics around Angular, frontend performance, tooling, testing, and more',
+      ],
+      listItemsTitle: '>> Who should apply:',
+      imageUrl: 'talk_fucdca.png',
       width: 400,
       height: 300,
     },

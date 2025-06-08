@@ -1,6 +1,6 @@
 <div class="bg-[#3F3145] text-[#C9BECD] p-6 rounded-lg border-2 border-[#504057] h-full flex flex-col">
   <div class="flex-grow overflow-y-auto">
-    <h3 class="text-5xl font-bold mb-4 tracking-tight ">{{ title }}</h3>
+    <h3 class="text-5xl font-bold mb-3 tracking-tight ">{{ title }}</h3>
     @for (line of content; track line) {
     <div class="mb-2">
       <p class="font-dm-mono">{{ line }}</p>
@@ -12,7 +12,7 @@
     </div>
     }
     @if (listItems) {
-    <ul class="list-disc list-inside mb-4 text-gray-400 font-dm-mono">
+    <ul class="list-disc list-inside mb-3 text-gray-400 font-dm-mono">
       @for (item of listItems; track item) {
       <li>{{ item }}</li>
       }

@@ -11,22 +11,26 @@
 
             @if (i % 2 === 0) {
             <!-- Text first -->
-            <app-info-card class="h-1/2 overflow-auto" [title]="card.title" [content]="card.content"
+            <app-info-card class="flex-1 min-h-0 overflow-auto" [title]="card.title" [content]="card.content"
               [buttonText]="card.buttonText" [listItems]="card.listItems" [listItemsTitle]="card.listItemsTitle">
             </app-info-card>
 
             @if (card.imageUrl) {
-            <img [ngSrc]="card.imageUrl" [alt]="card.title" [width]="card.width" [height]="card.height"
-              class="w-full object-cover rounded-lg border-2 border-[#504057] h-1/2" priority placeholder>
+            <div class="flex-1 min-h-0">
+              <img [ngSrc]="card.imageUrl" [alt]="card.title" [width]="card.width" [height]="card.height"
+                class="w-full h-full object-cover rounded-lg border-2 border-[#504057]" priority placeholder>
+            </div>
             }
             } @else {
             <!-- Image first -->
             @if (card.imageUrl) {
-            <img [ngSrc]="card.imageUrl" [alt]="card.title" [width]="card.width" [height]="card.height"
-              class="w-full object-cover rounded-lg border-2 border-[#504057] h-1/2" priority placeholder>
+            <div class="flex-1 min-h-0">
+              <img [ngSrc]="card.imageUrl" [alt]="card.title" [width]="card.width" [height]="card.height"
+                class="w-full h-full object-cover rounded-lg border-2 border-[#504057]" priority placeholder>
+            </div>
             }
 
-            <app-info-card class="h-1/2 overflow-auto" [title]="card.title" [content]="card.content"
+            <app-info-card class="flex-1 min-h-0 overflow-auto" [title]="card.title" [content]="card.content"
               [buttonText]="card.buttonText" [listItems]="card.listItems" [listItemsTitle]="card.listItemsTitle">
             </app-info-card>
             }
