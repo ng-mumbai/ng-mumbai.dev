@@ -1,63 +1,92 @@
 <app-header class="shrink-0"></app-header>
+<!-- Fixed height header -->
 
 <main class="flex-1 overflow-hidden">
-  <section class="p-4 md:p-8 h-full overflow-y-auto">
-    <div class="w-full h-auto md:h-[85vh] overflow-visible md:overflow-hidden">
-      <div class="w-[95%] md:w-[90%] mx-auto h-full">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 h-auto md:h-full">
-
-          @for (card of infoCards; track card.title; let i = $index) {
-          <div class="flex flex-col gap-4 md:gap-8 h-auto md:h-full md:overflow-hidden">
-
-            @if (i % 2 === 0) {
-            <app-info-card 
-              class="md:flex-1 md:min-h-0 md:overflow-auto" 
-              [title]="card.title" 
+  @if (isMobile) {
+  <section class="h-full overflow-y-auto">
+    <div class="w-full h-[85vh]">
+      <div class="w-[99%] mx-auto h-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
+          @for (card of infoCards;track card.title; let i=$index) {
+          <div class="flex flex-col gap-8 h-full">
+            <app-info-card
+              class="flex-1 min-h-0 overflow-auto"
+              [title]="card.title"
               [content]="card.content"
-              [buttonText]="card.buttonText" 
-              [listItems]="card.listItems" 
-              [listItemsTitle]="card.listItemsTitle">
-            </app-info-card>
-
-            @if (card.imageUrl) {
-            <div class="h-48 md:flex-1 md:min-h-0">
-              <img [ngSrc]="card.imageUrl" 
-                [alt]="card.title" 
-                [width]="card.width" 
-                [height]="card.height"
-                class="w-full h-full object-cover rounded-lg border-2 border-[#504057]" 
-                priority 
-                placeholder>
-            </div>
-            }
-            } @else {
-            @if (card.imageUrl) {
-            <div class="h-48 md:flex-1 md:min-h-0">
-              <img [ngSrc]="card.imageUrl" 
-                [alt]="card.title" 
-                [width]="card.width" 
-                [height]="card.height"
-                class="w-full h-full object-cover rounded-lg border-2 border-[#504057]" 
-                priority 
-                placeholder>
-            </div>
-            }
-
-            <app-info-card 
-              class="md:flex-1 md:min-h-0 md:overflow-auto" 
-              [title]="card.title" 
-              [content]="card.content"
-              [buttonText]="card.buttonText" 
-              [listItems]="card.listItems" 
-              [listItemsTitle]="card.listItemsTitle">
-            </app-info-card>
-            }
-
+              [buttonText]="card.buttonText"
+              [listItems]="card.listItems"
+              [listItemsTitle]="card.listItemsTitle"
+              [isMobile]="true"
+              [imageUrl]="card.imageUrl"
+            ></app-info-card>
           </div>
           }
-
         </div>
       </div>
     </div>
   </section>
+  } @else {
+  <section class="p-8 h-full overflow-y-auto">
+    <div class="w-full h-[85vh] overflow-hidden">
+      <div class="w-[90%] mx-auto h-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
+          @for (card of infoCards; track card.title; let i = $index) {
+          <div class="flex flex-col gap-8 h-full overflow-hidden">
+            @if (i % 2 === 0) {
+            <!-- Text first -->
+            <app-info-card
+              class="flex-1 min-h-0 overflow-auto"
+              [title]="card.title"
+              [content]="card.content"
+              [buttonText]="card.buttonText"
+              [listItems]="card.listItems"
+              [listItemsTitle]="card.listItemsTitle"
+            >
+            </app-info-card>
+
+            @if (card.imageUrl) {
+            <div class="flex-1 min-h-0">
+              <img
+                [ngSrc]="card.imageUrl"
+                [alt]="card.title"
+                [width]="card.width"
+                [height]="card.height"
+                class="w-full h-full object-cover rounded-lg border-2 border-[#504057]"
+                priority
+                placeholder
+              />
+            </div>
+            } } @else {
+            <!-- Image first -->
+            @if (card.imageUrl) {
+            <div class="flex-1 min-h-0">
+              <img
+                [ngSrc]="card.imageUrl"
+                [alt]="card.title"
+                [width]="card.width"
+                [height]="card.height"
+                class="w-full h-full object-cover rounded-lg border-2 border-[#504057]"
+                priority
+                placeholder
+              />
+            </div>
+            }
+
+            <app-info-card
+              class="flex-1 min-h-0 overflow-auto"
+              [title]="card.title"
+              [content]="card.content"
+              [buttonText]="card.buttonText"
+              [listItems]="card.listItems"
+              [listItemsTitle]="card.listItemsTitle"
+            >
+            </app-info-card>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  }
 </main>

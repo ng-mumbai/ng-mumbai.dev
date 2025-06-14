@@ -1,14 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { InfoCardComponent } from '../info-card/info-card.component';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {
+  CommonModule,
+  isPlatformBrowser,
+  NgOptimizedImage,
+} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   imports: [CommonModule, HeaderComponent, InfoCardComponent, NgOptimizedImage],
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  isMobile = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkDevice();
+      window.addEventListener('resize', this.checkDevice.bind(this));
+    }
+  }
+
+  checkDevice(): void {
+    this.isMobile = window.innerWidth <= 768;
+  }
   infoCards = [
     {
       title: 'Monthly meetups',
@@ -32,7 +50,7 @@ export class HomeComponent {
         'brands aligned with developer-first culture',
       ],
       listItemsTitle: ">> We're looking for:",
-      imageUrl: 'sponsors_ryuuoz.png',
+      imageUrl: 'talk_sj94j9.jpg',
       width: 400,
       height: 300,
     },
@@ -48,7 +66,7 @@ export class HomeComponent {
         'Topics around Angular, frontend performance, tooling, testing, and more',
       ],
       listItemsTitle: '>> Who should apply:',
-      imageUrl: 'talk_fucdca.png',
+      imageUrl: 'sponsors_ptmdtx.png',
       width: 400,
       height: 300,
     },

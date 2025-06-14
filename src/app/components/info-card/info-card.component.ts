@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-info-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './info-card.component.html',
 })
 export class InfoCardComponent {
+  @Input() isMobile!: boolean;
   @Input() title!: string;
   @Input() content!: string[];
   @Input() buttonText!: string;
