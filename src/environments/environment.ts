@@ -1,3 +1,3 @@
 export const environment = {
-  cloudinaryCloudName: 'CLOUDINARY_CLOUD_NAME',
+  cloudinaryCloudName: process.env['CLOUDINARY_CLOUD_NAME'],
 };
