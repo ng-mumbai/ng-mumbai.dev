@@ -14,10 +14,12 @@
               [title]="card.title"
               [content]="card.content"
               [buttonText]="card.buttonText"
-              [listItems]="card.listItems"
-              [listItemsTitle]="card.listItemsTitle"
+              [listItems]="card.listItems || []"
+              [listItemsTitle]="card.listItemsTitle || ''"
               [isMobile]="true"
               [imageUrl]="card.imageUrl"
+              [action]="card.action || ''"
+              (cardAction)="onCardAction($event)"
             ></app-info-card>
           </div>
           }
@@ -39,8 +41,10 @@
               [title]="card.title"
               [content]="card.content"
               [buttonText]="card.buttonText"
-              [listItems]="card.listItems"
-              [listItemsTitle]="card.listItemsTitle"
+              [listItems]="card.listItems || []"
+              [listItemsTitle]="card.listItemsTitle || ''"
+              [action]="card.action || ''"
+              (cardAction)="onCardAction($event)"
             >
             </app-info-card>
 
@@ -77,8 +81,10 @@
               [title]="card.title"
               [content]="card.content"
               [buttonText]="card.buttonText"
-              [listItems]="card.listItems"
-              [listItemsTitle]="card.listItemsTitle"
+              [listItems]="card.listItems || []"
+              [listItemsTitle]="card.listItemsTitle || ''"
+              [action]="card.action || ''"
+              (cardAction)="onCardAction($event)"
             >
             </app-info-card>
             }

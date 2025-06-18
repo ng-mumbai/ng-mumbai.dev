@@ -1,74 +1,45 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
+
 import { HeaderComponent } from '../header/header.component';
 import { InfoCardComponent } from '../info-card/info-card.component';
-import {
-  CommonModule,
-  isPlatformBrowser,
-  NgOptimizedImage,
-} from '@angular/common';
+import { MeetupDataService } from '../../services/meetup-data.service';
+import { ViewportService } from '../../services/viewport.service';
+import { InfoCard } from '../../models/info-card.interface';
 
 @Component({
   selector: 'app-home',
   imports: [CommonModule, HeaderComponent, InfoCardComponent, NgOptimizedImage],
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   isMobile = false;
+  infoCards: InfoCard[] = [];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  private readonly destroy$ = new Subject<void>();
+
+  constructor(
+    private meetupDataService: MeetupDataService,
+    private viewportService: ViewportService
+  ) {}
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.checkDevice();
-      window.addEventListener('resize', this.checkDevice.bind(this));
-    }
+    this.infoCards = this.meetupDataService.getInfoCards();
+
+    this.viewportService.isMobile$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isMobile => {
+        this.isMobile = isMobile;
+      });
   }
 
-  checkDevice(): void {
-    this.isMobile = window.innerWidth <= 768;
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
-  infoCards = [
-    {
-      title: 'Monthly meetups',
-      content: [
-        ">> a monthly meetup series for angular developers in mumbai. whether you're just starting out or have years of experience, these events are designed to help you connect with other developers, learn from industry experts, and stay updated with the latest in angular and frontend development.",
-      ],
-      buttonText: 'SIGN UP FOR UPDATES',
-      imageUrl: 'meetup_jttyfi.png',
-      width: 400,
-      height: 300,
-    },
-    {
-      title: 'Call for Sponsors',
-      content: [
-        ">> We're looking for sponsors to support our monthly meetups and get direct visibility with a focused, high-value tech audience.",
-      ],
-      buttonText: 'BECOME A SPONSOR',
-      listItems: [
-        'venue partners (coworking spaces, offices)',
-        'food & beverage sponsors',
-        'brands aligned with developer-first culture',
-      ],
-      listItemsTitle: ">> We're looking for:",
-      imageUrl: 'talk_sj94j9.jpg',
-      width: 400,
-      height: 300,
-    },
-    {
-      title: 'Submit your talk',
-      content: [
-        '>> NG Mumbai is accepting talk proposals! Share your Angular insights, lessons, or workarounds with our community.',
-      ],
-      buttonText: 'BECOME A SPEAKER',
-      listItems: [
-        'Developers of all experience levels',
-        'Speakers with practical, real-world takeaways',
-        'Topics around Angular, frontend performance, tooling, testing, and more',
-      ],
-      listItemsTitle: '>> Who should apply:',
-      imageUrl: 'sponsors_ptmdtx.png',
-      width: 400,
-      height: 300,
-    },
-  ];
+
+  onCardAction(action: string): void {
+    this.meetupDataService.handleCardAction(action);
+  }
 }
