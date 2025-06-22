@@ -43,7 +43,6 @@
             ],
 
             "styles": [
-              "@angular/material/prebuilt-themes/cyan-orange.css",
               "src/styles.css"
             ],
 
@@ -130,7 +129,6 @@
             ],
 
             "styles": [
-              "@angular/material/prebuilt-themes/cyan-orange.css",
               "src/styles.css"
             ],
 
