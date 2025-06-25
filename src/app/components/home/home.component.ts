@@ -11,6 +11,7 @@ import { InfoCard } from '../../models/info-card.interface';
 @Component({
   selector: 'app-home',
   imports: [CommonModule, HeaderComponent, InfoCardComponent, NgOptimizedImage],
+  providers: [MeetupDataService, ViewportService],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy {
